@@ -5,10 +5,10 @@
         <div class="post">
         <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <div class="date">
-              <h5>  {{ post.published_date }} </h5>
+              <h4>  {{ post.published_date }} </h4>
             </div>
-            <h5>{{ post.text|linebreaksbr }}</h5>
-          <h5>  <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a> </h5>
+            <h3>{{ post.text|linebreaksbr }}</h3>
+          <h4>  <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a> </h4>
           </div>
     {% endfor %}
 {% endblock content %}
