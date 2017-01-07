@@ -47,10 +47,6 @@ h1, h2, h3, h4, h5, h6 {
     margin-right: 20px;
 }
 
-.post {
-    margin-bottom: 70px;
-}
-
 .post h1 a, .post h1 a:visited {
     color: #000000;
 }
@@ -64,7 +60,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .sidenav {
       height: 100%;
-    }
+}
 
     /* Set black background color, white text and some padding */
 footer {
@@ -79,5 +75,11 @@ footer {
     height: auto;
     padding: 15px;
   }
-  .row.content {height: auto;}
+  .row.content {
+    height: auto;
+  }
+}
+
+.about{
+  padding: 20px 20px 20px 40px;
 }
