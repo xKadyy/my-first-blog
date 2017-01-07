@@ -15,15 +15,11 @@
 <body>
     <div class="page-header">
   {% if user.is_superuser %}
-      <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-      <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
-      <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
-  {%else%}
-  {%if user.is_authenticated%}
-     <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+      <a href="{% url 'logout' %}" class="top-menu"><small><span class="glyphicon glyphicon-log-out"></span><small></a>
+      <a href="{% url 'post_new' %}" class="top-menu"><small><span class="glyphicon glyphicon-plus"></span></small></a>
+      <a href="{% url 'post_draft_list' %}" class="top-menu"><small><span class="glyphicon glyphicon-edit"></span></small></a>
   {% else %}
-      <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
-  {% endif %}
+      <a href="{% url 'login' %}" class="top-menu"><small><span class="glyphicon glyphicon-log-in"></span></small></a>
   {% endif %}
   <h1><a href="/"> Blog</a></h1>
   </div>
@@ -31,10 +27,12 @@
     <div class="row content">
       <div class="col-sm-3 sidenav">
         <h4> Blog</h4>
+        <h5>
         <ul class="nav nav-pills nav-stacked">
           <li class="active"><a href="/">Home</a></li>
           <li><a href="#">About</a></li>
         </ul><br>
+      </h5>
       </div>
       <div class="col-sm-9">
             {% block content %}
