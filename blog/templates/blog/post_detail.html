@@ -9,12 +9,12 @@
     {% endif %}
       <div class="date">
         {% if post.published_date %}
-          <h6>  {{ post.published_date }} </h6>
+          <h5>  {{ post.published_date }} </h5>
         {% else %}
           <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
         {% endif %}
       </div>
-        <h4>{{ post.text|linebreaksbr }}</h4>
+        <h3>{{ post.text|linebreaksbr }}</h3>
     </div>
     <hr>
     <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
