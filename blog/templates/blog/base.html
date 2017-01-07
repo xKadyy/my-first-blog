@@ -1,34 +1,49 @@
 {% load staticfiles %}
 <html>
     <head>
-        <title>Django Girls blog</title>
+        <title>Blog</title>  <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
-    <body>
-      <div class="page-header">
-    {% if user.is_superuser %}
-        <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-        <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
-        <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
-    {%else%}
-    {%if user.is_authenticated%}
-       <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
-    {% else %}
-        <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
-    {% endif %}
-    {% endif %}
-    <h1><a href="/">Django Girls Blog</a></h1>
-</div>
-      <div class="content container">
-          <div class="row">
-              <div class="col-md-8">
-              {% block content %}
-              {% endblock %}
-              </div>
-          </div>
+<body>
+    <div class="page-header">
+  {% if user.is_superuser %}
+      <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+      <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+      <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+  {%else%}
+  {%if user.is_authenticated%}
+     <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+  {% else %}
+      <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+  {% endif %}
+  {% endif %}
+  <h1><a href="/"> Blog</a></h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row content">
+      <div class="col-sm-3 sidenav">
+        <h4> Blog</h4>
+        <ul class="nav nav-pills nav-stacked">
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="#">About</a></li>
+        </ul><br>
       </div>
-    </body>
+      <div class="col-sm-9">
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+</body>
+
 </html>
