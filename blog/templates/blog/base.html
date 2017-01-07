@@ -12,7 +12,7 @@
         <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
-<body style=background-color:#ffdaf6;>
+<body>
     <div class="page-header">
   {% if user.is_superuser %}
       <a href="{% url 'logout' %}" class="top-menu"><small><span class="glyphicon glyphicon-log-out"></span><small></a>
@@ -22,7 +22,7 @@
       <a href="{% url 'login' %}" class="top-menu"><small><span class="glyphicon glyphicon-log-in"></span></small></a>
   {% endif %}
   <h1><a href="/"> Just Another Blog</a></h1>
-  <h4><a href="/"> Made for the 2ID50 course at the TU/e </a></h4>
+  <h4><a href="/"> Made for the 2ID60 course at the TU/e </a></h4>
   </div>
   <div class="container-fluid">
     <div class="row content">
