@@ -2,39 +2,40 @@
 
 {% block content %}
     <div class="post">
+    <h1>{{ post.title }}</h1>
+    {% if user.is_superuser %}
+    <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+    {% endif %}
+      <div class="date">
         {% if post.published_date %}
-          <div class="date">
-            {{ post.published_date }}
-          </div>
+          <h6>  {{ post.published_date }} </h6>
         {% else %}
           <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
         {% endif %}
-        {% if user.is_superuser %}
-        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-        {% endif %}
-        <h1>{{ post.title }}</h1>
-        <h5>{{ post.text|linebreaksbr }}</h5>
+      </div>
+        <h4>{{ post.text|linebreaksbr }}</h4>
     </div>
     <hr>
     <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
     {% for comment in post.comments.all %}
-        {% if user.is_superuser or comment.approved_comment %}  <div class="comment">
+        {% if user.is_superuser or comment.approved_comment %}
+         <div class="comment">
+         <strong><h4>{{ comment.author }}</h4></strong>
+           {% if user.is_superuser and comment.approved_comment %}
+         <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+         {% endif %}
+           {% if not comment.approved_comment %}
+               <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+               <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+           {% endif %}
             <div class="date">
-                {{ comment.created_date }}
-                {% if user.is_superuser and comment.approved_comment %}
-              <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-              {% endif %}
-                {% if not comment.approved_comment %}
-                    <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-                    <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
-                {% endif %}
+              <h6>  {{ comment.created_date }} </h6>
             </div>
-            <strong>{{ comment.author }}</strong>
             <h5>{{ comment.text|linebreaks }}</h5>
         </div>
         {% endif %}
     {% empty %}
-        <h5>No comments here yet :(</h5>
+        <h4>No comments here yet :(</h4>
     {% endfor %}
 {% endblock %}
