@@ -15,7 +15,7 @@ h1 a {
     text-decoration: none;
 }
 
-.page-header h5, .page-header h5 a, .page-header h5 a:visited, .page-header h5 a:active {
+.page-header h4, .page-header h4 a, .page-header h4 a:visited, .page-header h4 a:active {
     color: #fff;
     text-decoration: none;
 }
