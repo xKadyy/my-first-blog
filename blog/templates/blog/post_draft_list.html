@@ -3,6 +3,7 @@
 {% block content %}
     {% for post in posts %}
         <div class="post">
+          <h1>Drafts</h1>
         <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <h5 class="date">created: {{ post.created_date|date:'d-m-Y' }}</h5>
             <h4>{{ post.text|truncatechars:200 }}</h4>

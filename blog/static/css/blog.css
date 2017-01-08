@@ -84,11 +84,15 @@ footer {
   padding: 20px 20px 20px 40px;
 }
 
-.homee:active, .aboutie:active, .homee:hover, .aboutie:hover{
+.homee:active, .aboutie:active{
+  background-color: #C43B5B;
+}
+
+.homee:hover, .aboutie:hover{
   background-color:#EF476F;
 }
 
 .homee:active, .aboutie:active .homee:hover, .aboutie:hover h4{
-  background-color:#EF476F;
+  background-color:#C43B5B;
   color: #fff;
 }
