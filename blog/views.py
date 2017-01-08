@@ -41,7 +41,7 @@ def post_edit(request, pk):
 
 @login_required
 def post_draft_list(request):
-    posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')
+    posts = Post.objects.filter(published_date__isnull=True).order_by('-created_date')
     return render(request, 'blog/post_draft_list.html', {'posts': posts})
 
 @login_required
@@ -58,6 +58,7 @@ def post_remove(request, pk):
 
 
 def add_comment_to_post(request, pk):
+    comment = Post.objects.filter(published_date__isnull=True).order_by('-created_date')
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         form = CommentForm(request.POST)

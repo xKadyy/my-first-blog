@@ -18,6 +18,7 @@
     </div>
     <hr>
     <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+    <h4>You're comment will be visible once it has been approved by the admin!</h4>
     {% for comment in post.comments.all %}
         {% if user.is_superuser or comment.approved_comment %}
          <div class="comment">
