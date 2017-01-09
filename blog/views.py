@@ -56,7 +56,7 @@ def post_remove(request, pk):
     post.delete()
     return redirect('post_list')
 
-
+@login_required
 def add_comment_to_post(request, pk):
     comment = Post.objects.filter(published_date__isnull=True).order_by('-created_date')
     post = get_object_or_404(Post, pk=pk)
